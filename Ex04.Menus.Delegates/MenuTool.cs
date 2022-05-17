@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Ex04.Menus.Delegates
 {
-    class MenuTool : MenuItem
+    public class MenuTool : MenuItem
     {
+        public MenuTool(string i_Title) : base(i_Title)
+        {
+
+        }
     }
 }

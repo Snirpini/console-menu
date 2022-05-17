@@ -9,7 +9,10 @@ namespace Ex04.Menus.Test
     {
         public static void Main()
         {
+            string title = "Hello! This is the main menu:";
+            Delegates.MainMenu mainMenu = new Delegates.MainMenu(title);
 
+            mainMenu.Show();
         }
     }
 }

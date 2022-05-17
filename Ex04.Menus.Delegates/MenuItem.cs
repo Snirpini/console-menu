@@ -8,13 +8,14 @@ namespace Ex04.Menus.Delegates
     public abstract class MenuItem
     {
         private readonly string r_Title;
-        public event Action<string> m_Report
+        public event Action<string> m_ReportChosenDelegate;
 
         public MenuItem(string i_Title)
         {
             r_Title = i_Title;
         }
 
-        
+        public string Title { get; }
+
     }
 }
