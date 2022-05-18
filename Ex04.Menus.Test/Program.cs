@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Ex04.Menus.Delegates;
+
 namespace Ex04.Menus.Test
 {
     class Program
     {
         public static void Main()
         {
-            string title = "Hello! This is the main menu:";
-            Delegates.MainMenu mainMenu = new Delegates.MainMenu(title);
-
-            mainMenu.Show();
+            MenuTests menuTests = new MenuTests();
+            menuTests.DelegatesMenuRun();
         }
     }
 }

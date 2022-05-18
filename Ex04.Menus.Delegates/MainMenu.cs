@@ -5,24 +5,11 @@ using System.Text;
 
 namespace Ex04.Menus.Delegates
 {
-    public class MainMenu : Menu
+    public class MainMenu : SubMenu
     {
-        public MainMenu(string i_Title) : base(i_Title)
+        public MainMenu(string i_Title) : base(i_Title) 
         {
-        }
-
-        public void Show()
-        {
-            Console.WriteLine(this.Title);
-
-        }
-
-        private void printMenuOptions()
-        {
-            for(int i = 1; i < m_MenuItems.Count; i++)
-            {
-
-            }
+            m_MenuItems[0].Title = "Exit";
         }
     }
 }
