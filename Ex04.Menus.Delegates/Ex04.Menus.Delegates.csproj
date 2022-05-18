@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="MainMenu.cs" />
-    <Compile Include="Menu.cs" />
+    <Compile Include="SubMenu.cs" />
     <Compile Include="MenuItem.cs" />
     <Compile Include="MenuTool.cs" />
   </ItemGroup>

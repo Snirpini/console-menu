@@ -7,15 +7,25 @@ namespace Ex04.Menus.Delegates
 {
     public abstract class MenuItem
     {
-        private readonly string r_Title;
-        public event Action<string> m_ReportChosenDelegate;
+        private string m_Title;
 
         public MenuItem(string i_Title)
         {
-            r_Title = i_Title;
+            m_Title = i_Title;
         }
 
-        public string Title { get; }
+        public string Title
+        {
+            get
+            {
+                return m_Title;
+            }
+            set
+            {
+                m_Title = value;
+            }
+        }
 
+        public abstract void DoWhenChosen();
     }
 }
