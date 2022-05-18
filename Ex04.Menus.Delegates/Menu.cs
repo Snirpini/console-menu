@@ -5,7 +5,20 @@ using System.Text;
 
 namespace Ex04.Menus.Delegates
 {
-    class Menu : MenuItem
+    public class Menu : MenuItem
     {
+        protected List<MenuItem> m_MenuItems = new List<MenuItem>();
+
+        public Menu(string i_Title) : base(i_Title)
+        {
+
+        }
+
+        public void AddMenuItem(MenuItem menuItem)
+        {
+
+        }
+
+        // public void RemoveMenuItem() ?
     }
 }
