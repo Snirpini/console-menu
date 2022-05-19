@@ -9,11 +9,13 @@ namespace Ex04.Menus.Test
     {
         public static void ShowDate()
         {
+            Console.WriteLine("The Date is:");
             Console.WriteLine(DateTime.Now.ToString("dd/MM/yyyy"));
         }
 
         public static void ShowTime()
         {
+            Console.WriteLine("The Time is:");
             Console.WriteLine(DateTime.Now.ToString("HH:mm:ss"));
         }
 
@@ -22,7 +24,6 @@ namespace Ex04.Menus.Test
             Console.WriteLine("Please enter a sentence:");
             string sentence = Console.ReadLine();
             int numOfSpaces = 0;
-
             foreach(char ch in sentence)
             {
                 if(char.IsWhiteSpace(ch))
@@ -30,13 +31,13 @@ namespace Ex04.Menus.Test
                     numOfSpaces++;
                 }
             }
-
             Console.WriteLine("There are {0} whitespaces in this sentence.", numOfSpaces);
         }
 
         public static void ShowVersion()
         {
-            Console.WriteLine("Version: 21.1.4.8930");
+            Console.WriteLine("the Version is:");
+            Console.WriteLine("21.1.4.8930");
         }
     }
 }

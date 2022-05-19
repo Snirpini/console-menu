@@ -22,7 +22,7 @@ namespace Ex04.Menus.Test
 
         private Delegates.MainMenu DelegatesInitMenu()
         {
-            string title = "**Delegates Main Menu**";
+            string title = "Delegates Main Menu";
             Delegates.MainMenu mainMenu = new Delegates.MainMenu(title);
             Delegates.SubMenu subMenu;
             Delegates.MenuTool menuTool;
@@ -56,8 +56,7 @@ namespace Ex04.Menus.Test
 
         private Interfaces.MainMenu InterfacesInitMenu()
         {
-            string title = "**Interfaces Main Menu**";
-
+            string title = "Interfaces Main Menu";
             Interfaces.MainMenu mainMenu = new Interfaces.MainMenu(title);
             Interfaces.SubMenu subMenu;
             Interfaces.MenuTool menuTool;

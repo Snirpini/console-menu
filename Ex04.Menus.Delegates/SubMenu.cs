@@ -28,10 +28,8 @@ namespace Ex04.Menus.Delegates
             {
                 printMenu();
                 int userChoice = getUserChoice();
-
                 Console.Clear();
                 m_MenuItems[userChoice].DoWhenChosen();
-
                 if (m_MenuItems[userChoice] is MenuTool && userChoice != 0)
                 {
                     Console.WriteLine("{0}Press any key to back to last menu...", Environment.NewLine);
@@ -43,14 +41,15 @@ namespace Ex04.Menus.Delegates
 
         private void printMenu()
         {
-            Console.WriteLine(Title);
-
+            Console.WriteLine("**{0}**", Title);
+            Console.WriteLine("========================");
             for (int i = 1; i < m_MenuItems.Count; i++)
             {
                 Console.WriteLine(i.ToString() + " -> " + m_MenuItems[i].Title);
             }
-
             Console.WriteLine("0 -> " + m_MenuItems[0].Title);
+            Console.WriteLine("========================");
+            Console.WriteLine("Enter your requst: (1 to {0} or press '0' to {1})", m_MenuItems.Count - 1, m_MenuItems[0].Title);
         }
 
         private int getUserChoice()
