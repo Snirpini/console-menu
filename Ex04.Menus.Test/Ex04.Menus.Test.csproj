@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="MenuFunctionsInterfaces.cs" />
     <Compile Include="MenuTests.cs" />
     <Compile Include="MenuFunctions.cs" />
     <Compile Include="Program.cs" />
@@ -40,6 +41,10 @@
     <ProjectReference Include="..\Ex04.Menus.Delegates\Ex04.Menus.Delegates.csproj">
       <Project>{d9ff8716-4921-46fb-a8f1-b868bb61048f}</Project>
       <Name>Ex04.Menus.Delegates</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ex04.Menus.Interfaces\Ex04.Menus.Interfaces.csproj">
+      <Project>{201a46d3-51bd-4a60-90cc-c69177f75ea9}</Project>
+      <Name>Ex04.Menus.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

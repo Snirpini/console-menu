@@ -9,29 +9,29 @@ namespace Ex04.Menus.Test
     {
         public static void ShowDate()
         {
-            Console.WriteLine(DateTime.Today.Date.ToString());      
+            Console.WriteLine(DateTime.Now.ToString("dd/MM/yyyy"));
         }
 
         public static void ShowTime()
         {
-            Console.WriteLine(DateTime.Now.ToString("hh:mm:ss"));
+            Console.WriteLine(DateTime.Now.ToString("HH:mm:ss"));
         }
 
         public static void CountSpaces()
         {
             Console.WriteLine("Please enter a sentence:");
             string sentence = Console.ReadLine();
-            int counter = 0;
+            int numOfSpaces = 0;
 
             foreach(char ch in sentence)
             {
                 if(char.IsWhiteSpace(ch))
                 {
-                    counter++;
+                    numOfSpaces++;
                 }
             }
 
-            Console.WriteLine("There are {0} whitespaces in this sentence.", counter);
+            Console.WriteLine("There are {0} whitespaces in this sentence.", numOfSpaces);
         }
 
         public static void ShowVersion()

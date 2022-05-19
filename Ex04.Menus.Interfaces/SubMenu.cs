@@ -3,18 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Ex04.Menus.Delegates
+namespace Ex04.Menus.Interfaces
 {
-    public class SubMenu : MenuItem
+    public class SubMenu : MenuItem, IChosenObserver
     {
         protected List<MenuItem> m_MenuItems = new List<MenuItem>();
-        private bool m_Exit = false; 
+        private bool m_Exit = false;
 
         public SubMenu(string i_Title) : base(i_Title)
         {
             MenuTool menuTool = new MenuTool("Back");
-            menuTool.m_MenuToolChosenDelegate += this.doWhenExit;
+            menuTool.ChosenObserver = this as IChosenObserver;
             AddNewMenuItem(menuTool);
+        }
+
+        public bool Exit
+        {
+            set
+            {
+                m_Exit = value;
+            }
         }
 
         public void AddNewMenuItem(MenuItem i_MenuItem)
@@ -65,7 +73,7 @@ namespace Ex04.Menus.Delegates
                 {
                     Console.WriteLine("Invalid input! please try again.");
                 }
-            } while(!isValidInput);
+            } while (!isValidInput);
 
             return int.Parse(userInput);
         }
@@ -85,6 +93,11 @@ namespace Ex04.Menus.Delegates
         public override void DoWhenChosen()
         {
             this.Show();
+        }
+
+        void IChosenObserver.Execute()
+        {
+            doWhenExit();
         }
     }
 }

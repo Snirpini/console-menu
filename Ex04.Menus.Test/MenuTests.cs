@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Ex04.Menus.Delegates;
-
 namespace Ex04.Menus.Test
 {
     public class MenuTests
@@ -18,37 +16,71 @@ namespace Ex04.Menus.Test
 
         public void DelegatesMenuRun()
         {
-            MainMenu mainMenu =  DelegatesInitMenu();
+            Delegates.MainMenu mainMenu =  DelegatesInitMenu();
             mainMenu.Show();
         }
 
-        private MainMenu DelegatesInitMenu()
+        private Delegates.MainMenu DelegatesInitMenu()
         {
             string title = "**Delegates Main Menu**";
-            MainMenu mainMenu = new MainMenu(title);
-            SubMenu subMenu;
-            MenuTool menuTool;
+            Delegates.MainMenu mainMenu = new Delegates.MainMenu(title);
+            Delegates.SubMenu subMenu;
+            Delegates.MenuTool menuTool;
 
-            subMenu = new SubMenu(k_ShowDateOrTimeTitle);
-            menuTool = new MenuTool(K_ShowTimeTitle);
-            menuTool.m_ReportChosenDelegate += MenuFunctions.ShowTime;
+            subMenu = new Delegates.SubMenu(k_ShowDateOrTimeTitle);
+            menuTool = new Delegates.MenuTool(K_ShowTimeTitle);
+            menuTool.m_MenuToolChosenDelegate += MenuFunctions.ShowTime;
             subMenu.AddNewMenuItem(menuTool);
-            menuTool = new MenuTool(K_ShowDateTitle);
-            menuTool.m_ReportChosenDelegate += MenuFunctions.ShowDate;
+            menuTool = new Delegates.MenuTool(K_ShowDateTitle);
+            menuTool.m_MenuToolChosenDelegate += MenuFunctions.ShowDate;
             subMenu.AddNewMenuItem(menuTool);
             mainMenu.AddNewMenuItem(subMenu);
 
-            subMenu = new SubMenu(K_VersionAndSpacesTitle);
-            menuTool = new MenuTool(K_CountSpacesTitle);
-            menuTool.m_ReportChosenDelegate += MenuFunctions.CountSpaces;
+            subMenu = new Delegates.SubMenu(K_VersionAndSpacesTitle);
+            menuTool = new Delegates.MenuTool(K_CountSpacesTitle);
+            menuTool.m_MenuToolChosenDelegate += MenuFunctions.CountSpaces;
             subMenu.AddNewMenuItem(menuTool);
-            menuTool = new MenuTool(K_ShowVersionTitle);
-            menuTool.m_ReportChosenDelegate += MenuFunctions.ShowVersion;
+            menuTool = new Delegates.MenuTool(K_ShowVersionTitle);
+            menuTool.m_MenuToolChosenDelegate += MenuFunctions.ShowVersion;
             subMenu.AddNewMenuItem(menuTool);
             mainMenu.AddNewMenuItem(subMenu);
 
             return mainMenu;
         }
 
+        public void InterfacesMenuRun()
+        {
+            Interfaces.MainMenu mainMenu = InterfacesInitMenu();
+            mainMenu.Show();
+        }
+
+        private Interfaces.MainMenu InterfacesInitMenu()
+        {
+            string title = "**Interfaces Main Menu**";
+
+            Interfaces.MainMenu mainMenu = new Interfaces.MainMenu(title);
+            Interfaces.SubMenu subMenu;
+            Interfaces.MenuTool menuTool;
+
+            subMenu = new Interfaces.SubMenu(k_ShowDateOrTimeTitle);
+            menuTool = new Interfaces.MenuTool(K_ShowTimeTitle);
+            menuTool.ChosenObserver = new MenuFunctionsInterfaces.ShowTime();
+            subMenu.AddNewMenuItem(menuTool);
+            menuTool = new Interfaces.MenuTool(K_ShowDateTitle);
+            menuTool.ChosenObserver = new MenuFunctionsInterfaces.ShowDate();
+            subMenu.AddNewMenuItem(menuTool);
+            mainMenu.AddNewMenuItem(subMenu);
+
+            subMenu = new Interfaces.SubMenu(K_VersionAndSpacesTitle);
+            menuTool = new Interfaces.MenuTool(K_CountSpacesTitle);
+            menuTool.ChosenObserver = new MenuFunctionsInterfaces.CountSpaces();
+            subMenu.AddNewMenuItem(menuTool);
+            menuTool = new Interfaces.MenuTool(K_ShowVersionTitle);
+            menuTool.ChosenObserver = new MenuFunctionsInterfaces.ShowVersion();
+            subMenu.AddNewMenuItem(menuTool);
+            mainMenu.AddNewMenuItem(subMenu);
+
+            return mainMenu;
+        }
     }
 }
