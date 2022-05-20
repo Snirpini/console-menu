@@ -7,33 +7,33 @@ namespace Ex04.Menus.Test
 {
     public static class MenuFunctionsInterfaces
     {
-        public class ShowDate : Interfaces.IChosenObserver
+        public class ShowDate : Interfaces.IMenuToolChosenObserver
         {
-            void Interfaces.IChosenObserver.Execute()
+            void Interfaces.IMenuToolChosenObserver.Execute()
             {
                 MenuFunctions.ShowDate();
             }
         }
 
-        public class ShowTime : Interfaces.IChosenObserver
+        public class ShowTime : Interfaces.IMenuToolChosenObserver
         {
-            void Interfaces.IChosenObserver.Execute()
+            void Interfaces.IMenuToolChosenObserver.Execute()
             {
                 MenuFunctions.ShowTime();
             }
         }
 
-        public class CountSpaces : Interfaces.IChosenObserver
+        public class CountSpaces : Interfaces.IMenuToolChosenObserver
         {
-            void Interfaces.IChosenObserver.Execute()
+            void Interfaces.IMenuToolChosenObserver.Execute()
             {
                 MenuFunctions.CountSpaces();
             }
         }
 
-        public class ShowVersion : Interfaces.IChosenObserver
+        public class ShowVersion : Interfaces.IMenuToolChosenObserver
         {
-            void Interfaces.IChosenObserver.Execute()
+            void Interfaces.IMenuToolChosenObserver.Execute()
             {
                 MenuFunctions.ShowVersion();
             }

@@ -9,14 +9,12 @@ namespace Ex04.Menus.Test
     {
         public static void ShowDate()
         {
-            Console.WriteLine("The Date is:");
-            Console.WriteLine(DateTime.Now.ToString("dd/MM/yyyy"));
+            Console.WriteLine("The Date is: {0}", DateTime.Now.ToString("dd/MM/yyyy"));
         }
 
         public static void ShowTime()
         {
-            Console.WriteLine("The Time is:");
-            Console.WriteLine(DateTime.Now.ToString("HH:mm:ss"));
+            Console.WriteLine("The Time is: {0}", DateTime.Now.ToString("HH:mm:ss"));
         }
 
         public static void CountSpaces()
@@ -36,8 +34,8 @@ namespace Ex04.Menus.Test
 
         public static void ShowVersion()
         {
-            Console.WriteLine("the Version is:");
-            Console.WriteLine("21.1.4.8930");
+            string version = "21.1.4.8930";
+            Console.WriteLine("Version: {0}", version);
         }
     }
 }

@@ -7,13 +7,14 @@ namespace Ex04.Menus.Delegates
 {
     public class MenuTool : MenuItem
     {
-        public event Action m_MenuToolChosenDelegate;
+        private event Action m_MenuToolChosenDelegate;
 
-        public MenuTool(string i_Title) : base(i_Title)
+        public MenuTool(string i_Title, Action i_MenuToolChosenDelegate) : base(i_Title)
         {
+            m_MenuToolChosenDelegate += i_MenuToolChosenDelegate;
         }
 
-        public override void DoWhenChosen()
+        internal override void DoWhenChosen()
         {
             onChoose();
         }
