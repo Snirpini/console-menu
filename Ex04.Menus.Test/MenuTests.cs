@@ -22,26 +22,22 @@ namespace Ex04.Menus.Test
 
         private Delegates.MainMenu DelegatesInitMenu()
         {
-            string title = "Delegates Main Menu";
-            Delegates.MainMenu mainMenu = new Delegates.MainMenu(title);
+            string mainMenuTitle = "Delegates Main Menu";
+            Delegates.MainMenu mainMenu = new Delegates.MainMenu(mainMenuTitle);
             Delegates.SubMenu subMenu;
             Delegates.MenuTool menuTool;
 
             subMenu = new Delegates.SubMenu(k_ShowDateOrTimeTitle);
-            menuTool = new Delegates.MenuTool(K_ShowTimeTitle);
-            menuTool.m_MenuToolChosenDelegate += MenuFunctions.ShowTime;
+            menuTool = new Delegates.MenuTool(K_ShowTimeTitle, MenuFunctions.ShowTime);
             subMenu.AddNewMenuItem(menuTool);
-            menuTool = new Delegates.MenuTool(K_ShowDateTitle);
-            menuTool.m_MenuToolChosenDelegate += MenuFunctions.ShowDate;
+            menuTool = new Delegates.MenuTool(K_ShowDateTitle, MenuFunctions.ShowDate);
             subMenu.AddNewMenuItem(menuTool);
             mainMenu.AddNewMenuItem(subMenu);
 
             subMenu = new Delegates.SubMenu(K_VersionAndSpacesTitle);
-            menuTool = new Delegates.MenuTool(K_CountSpacesTitle);
-            menuTool.m_MenuToolChosenDelegate += MenuFunctions.CountSpaces;
+            menuTool = new Delegates.MenuTool(K_CountSpacesTitle, MenuFunctions.CountSpaces);
             subMenu.AddNewMenuItem(menuTool);
-            menuTool = new Delegates.MenuTool(K_ShowVersionTitle);
-            menuTool.m_MenuToolChosenDelegate += MenuFunctions.ShowVersion;
+            menuTool = new Delegates.MenuTool(K_ShowVersionTitle, MenuFunctions.ShowVersion);
             subMenu.AddNewMenuItem(menuTool);
             mainMenu.AddNewMenuItem(subMenu);
 
@@ -56,26 +52,27 @@ namespace Ex04.Menus.Test
 
         private Interfaces.MainMenu InterfacesInitMenu()
         {
-            string title = "Interfaces Main Menu";
-            Interfaces.MainMenu mainMenu = new Interfaces.MainMenu(title);
+            string mainMenuTitle = "Interfaces Main Menu";
+            Interfaces.MainMenu mainMenu = new Interfaces.MainMenu(mainMenuTitle);
             Interfaces.SubMenu subMenu;
             Interfaces.MenuTool menuTool;
+            Interfaces.IMenuToolChosenObserver menuToolChosenObserver;
 
             subMenu = new Interfaces.SubMenu(k_ShowDateOrTimeTitle);
-            menuTool = new Interfaces.MenuTool(K_ShowTimeTitle);
-            menuTool.ChosenObserver = new MenuFunctionsInterfaces.ShowTime();
+            menuToolChosenObserver = new MenuFunctionsInterfaces.ShowTime() as Interfaces.IMenuToolChosenObserver;
+            menuTool = new Interfaces.MenuTool(K_ShowTimeTitle, menuToolChosenObserver);
             subMenu.AddNewMenuItem(menuTool);
-            menuTool = new Interfaces.MenuTool(K_ShowDateTitle);
-            menuTool.ChosenObserver = new MenuFunctionsInterfaces.ShowDate();
+            menuToolChosenObserver = new MenuFunctionsInterfaces.ShowDate() as Interfaces.IMenuToolChosenObserver;
+            menuTool = new Interfaces.MenuTool(K_ShowDateTitle, menuToolChosenObserver);
             subMenu.AddNewMenuItem(menuTool);
             mainMenu.AddNewMenuItem(subMenu);
 
             subMenu = new Interfaces.SubMenu(K_VersionAndSpacesTitle);
-            menuTool = new Interfaces.MenuTool(K_CountSpacesTitle);
-            menuTool.ChosenObserver = new MenuFunctionsInterfaces.CountSpaces();
+            menuToolChosenObserver = new MenuFunctionsInterfaces.CountSpaces() as Interfaces.IMenuToolChosenObserver;
+            menuTool = new Interfaces.MenuTool(K_CountSpacesTitle, menuToolChosenObserver);
             subMenu.AddNewMenuItem(menuTool);
-            menuTool = new Interfaces.MenuTool(K_ShowVersionTitle);
-            menuTool.ChosenObserver = new MenuFunctionsInterfaces.ShowVersion();
+            menuToolChosenObserver = new MenuFunctionsInterfaces.ShowVersion() as Interfaces.IMenuToolChosenObserver;
+            menuTool = new Interfaces.MenuTool(K_ShowVersionTitle, menuToolChosenObserver);
             subMenu.AddNewMenuItem(menuTool);
             mainMenu.AddNewMenuItem(subMenu);
 

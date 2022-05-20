@@ -14,7 +14,7 @@ namespace Ex04.Menus.Delegates
             m_Title = i_Title;
         }
 
-        public string Title
+        internal string Title
         {
             get
             {
@@ -26,6 +26,6 @@ namespace Ex04.Menus.Delegates
             }
         }
 
-        public abstract void DoWhenChosen();
+        internal abstract void DoWhenChosen();
     }
 }

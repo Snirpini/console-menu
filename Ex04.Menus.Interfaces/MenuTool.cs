@@ -5,35 +5,28 @@ using System.Text;
 
 namespace Ex04.Menus.Interfaces
 {
-    public interface IChosenObserver
+    public interface IMenuToolChosenObserver
     {
         void Execute();
     }
 
     public class MenuTool : MenuItem
     {
-        private IChosenObserver m_ChosenObserver;
+        private readonly IMenuToolChosenObserver r_ChosenObserver;
 
-        public MenuTool(string i_Title) : base(i_Title)
+        public MenuTool(string i_Title, IMenuToolChosenObserver i_ChosenObserver) : base(i_Title)
         {
+            r_ChosenObserver = i_ChosenObserver;
         }
 
-        public IChosenObserver ChosenObserver
-        {
-            set
-            {
-                m_ChosenObserver = value;
-            }
-        }
-
-        public override void DoWhenChosen()
+        internal override void DoWhenChosen()
         {
             onChoose();
         }
 
         private void onChoose()
         {
-            m_ChosenObserver.Execute();
+            r_ChosenObserver.Execute();
         }
     }
 }

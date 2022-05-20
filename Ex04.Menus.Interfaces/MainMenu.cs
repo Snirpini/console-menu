@@ -9,7 +9,7 @@ namespace Ex04.Menus.Interfaces
     {
         public MainMenu(string i_Title) : base(i_Title)
         {
-            m_MenuItems[0].Title = "Exit";
+            r_MenuItems[0].Title = "Exit";
         }
     }
 }

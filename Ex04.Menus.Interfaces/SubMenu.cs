@@ -5,40 +5,34 @@ using System.Text;
 
 namespace Ex04.Menus.Interfaces
 {
-    public class SubMenu : MenuItem, IChosenObserver
+    public class SubMenu : MenuItem, IMenuToolChosenObserver
     {
-        protected List<MenuItem> m_MenuItems = new List<MenuItem>();
-        private bool m_Exit = false;
+        protected readonly List<MenuItem> r_MenuItems = new List<MenuItem>();
+        private bool m_Exit;
 
         public SubMenu(string i_Title) : base(i_Title)
         {
-            MenuTool menuTool = new MenuTool("Back");
-            menuTool.ChosenObserver = this as IChosenObserver;
+            MenuTool menuTool = new MenuTool("Back", this as IMenuToolChosenObserver);
             AddNewMenuItem(menuTool);
-        }
-
-        public bool Exit
-        {
-            set
-            {
-                m_Exit = value;
-            }
         }
 
         public void AddNewMenuItem(MenuItem i_MenuItem)
         {
-            m_MenuItems.Add(i_MenuItem);
+            r_MenuItems.Add(i_MenuItem);
         }
 
         public void Show()
         {
+            m_Exit = false;
+            int userChoice;
+
             while (!m_Exit)
             {
                 printMenu();
-                int userChoice = getUserChoice();
+                userChoice = getUserChoice();
                 Console.Clear();
-                m_MenuItems[userChoice].DoWhenChosen();
-                if (m_MenuItems[userChoice] is MenuTool && userChoice != 0)
+                r_MenuItems[userChoice].DoWhenChosen();
+                if (r_MenuItems[userChoice] is MenuTool && userChoice != 0)
                 {
                     Console.WriteLine("{0}Press any key to back to last menu...", Environment.NewLine);
                     Console.ReadKey();
@@ -49,15 +43,20 @@ namespace Ex04.Menus.Interfaces
 
         private void printMenu()
         {
-            Console.WriteLine("**{0}**", Title);
-            Console.WriteLine("========================");
-            for (int i = 1; i < m_MenuItems.Count; i++)
+            Console.WriteLine($"**{Title}**");
+            printSeparator();
+            for (int i = 1; i < r_MenuItems.Count; i++)
             {
-                Console.WriteLine(i.ToString() + " -> " + m_MenuItems[i].Title);
+                Console.WriteLine("{0}) {1}", i.ToString(), r_MenuItems[i].Title);
             }
-            Console.WriteLine("0 -> " + m_MenuItems[0].Title);
+            Console.WriteLine("0) {0}", r_MenuItems[0].Title);
+            printSeparator();
+            Console.WriteLine("Enter your requst: (1 to {0} or press '0' to {1})", r_MenuItems.Count - 1, r_MenuItems[0].Title);
+        }
+
+        private void printSeparator()
+        {
             Console.WriteLine("========================");
-            Console.WriteLine("Enter your requst: (1 to {0} or press '0' to {1})", m_MenuItems.Count - 1, m_MenuItems[0].Title);
         }
 
         private int getUserChoice()
@@ -81,7 +80,7 @@ namespace Ex04.Menus.Interfaces
         {
             int userChoice;
 
-            return int.TryParse(i_Input, out userChoice) && userChoice >= 0 && userChoice < m_MenuItems.Count;
+            return int.TryParse(i_Input, out userChoice) && userChoice >= 0 && userChoice < r_MenuItems.Count;
         }
 
         private void doWhenExit()
@@ -89,12 +88,12 @@ namespace Ex04.Menus.Interfaces
             m_Exit = true;
         }
 
-        public override void DoWhenChosen()
+        internal override void DoWhenChosen()
         {
             this.Show();
         }
 
-        void IChosenObserver.Execute()
+        void IMenuToolChosenObserver.Execute()
         {
             doWhenExit();
         }
